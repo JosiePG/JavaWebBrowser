@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 
 public class HomePage{
@@ -11,18 +12,27 @@ public class HomePage{
         GroupLayout home_layout = new GroupLayout(home_panel);
         JButton search = new JButton("Search");
         TextField address_bar = new TextField(16);
-        home_panel.setLayout(home_layout);
 
+        search.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                Search.getRequest(address_bar.getText());
+            }
+        });
+
+
+
+
+        // Layout
+        home_panel.setLayout(home_layout);
         home_layout.setAutoCreateGaps(true);
         home_layout.setAutoCreateContainerGaps(true);
-
         GroupLayout.ParallelGroup hGroup = home_layout.createParallelGroup();
         hGroup.addGroup(home_layout.createSequentialGroup().
                 addComponent(address_bar).addComponent(search));
         hGroup.addGroup(home_layout.createSequentialGroup().addGap(150).
                 addComponent(browser_name));
         home_layout.setHorizontalGroup(hGroup);
-
         GroupLayout.SequentialGroup vGroup = home_layout.createSequentialGroup();
         vGroup.addGroup(home_layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
                 addComponent(address_bar,30,30,30).addComponent(search));
@@ -31,7 +41,6 @@ public class HomePage{
         vGroup.addGroup(home_layout.createParallelGroup(GroupLayout.Alignment.BASELINE).
                 addComponent(browser_name));
         home_layout.setVerticalGroup(vGroup);
-
         home.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         home.add(home_panel);
         home.setSize(500,500);
