@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class HomePage{
     public static void main(String[] args){
-        System.out.println("Hello World");
 
         JFrame home = new JFrame("JWeb Browser");
         JLabel browser_name = new JLabel("Welcome to JWeb Browser!",JLabel.CENTER);
